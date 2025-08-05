@@ -1,4 +1,6 @@
+using Application.Services;
 using Domain.Entities;
+using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Proposta.API.Controllers
@@ -9,41 +11,38 @@ namespace Proposta.API.Controllers
     {
 
         private readonly ILogger<PropostaController> _logger;
+        private readonly IPropostaService _propostaService;
 
-        public PropostaController(ILogger<PropostaController> logger)
+        public PropostaController(ILogger<PropostaController> logger, IPropostaService propostaService)
         {
             _logger = logger;
+            _propostaService = propostaService;
         }
 
         [HttpPost]
-        public Task<Domain.Entities.Proposta> Post(Domain.Entities.Proposta model)
+        public async Task<Domain.Entities.Proposta> Post(Domain.Entities.Proposta model)
         {
-            return Task.FromResult(new Domain.Entities.Proposta { Id = model.Id });
+            return await _propostaService.PostAsync(model);   
         }
 
         [HttpGet]
         [Route("{id}")]
-        public Task<Domain.Entities.Proposta> Get(Guid id)
+        public Task<Domain.Entities.Proposta> Get(string id)
         {
-            return Task.FromResult(new Domain.Entities.Proposta { Id = id });
+            return _propostaService.GetAsync(id);
         }
 
         [HttpPut]
         [Route("{id}/change-status")]
-        public Task<Domain.Entities.Proposta> ChangeStatus(Guid id)
+        public async Task<Domain.Entities.Proposta> ChangeStatus(string id)
         {
-            return Task.FromResult(new Domain.Entities.Proposta { Id = id });
+            return await Task.FromResult(new Domain.Entities.Proposta { Id = id });
         }
 
         [HttpGet]
-        public IEnumerable<Domain.Entities.Proposta> GetList()
+        public async Task<IEnumerable<Domain.Entities.Proposta>> GetList(int page = 1)
         {
-            return new List<Domain.Entities.Proposta>
-            {
-                new Domain.Entities.Proposta(),
-                new Domain.Entities.Proposta(),
-                new Domain.Entities.Proposta()
-            };
+            return await  _propostaService.GetListAsync(page);
         }
     }
 }

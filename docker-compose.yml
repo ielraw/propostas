@@ -4,6 +4,9 @@ services:
     build:
       context: .
       dockerfile: Proposta.API/Dockerfile
+    # depends_on:
+    #   sqlserver:
+    #     condition: service_healthy
 
   contratacao.api:
     image: ${DOCKER_REGISTRY-}contratacaoapi
@@ -18,3 +21,37 @@ services:
       context: .
       dockerfile: Contratacao.Consumer/Dockerfile
 
+      
+  sqlserver:
+    container_name: sqlserver
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    restart: always
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "SqlServer2022!" -Q "SELECT 1" -b -o /dev/null
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+    environment:
+      MSSQL_SA_PASSWORD: "SqlServer2022!"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver:/var/opt/mssql
+
+  rabbitmq:
+    image: rabbitmq:4-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672" # AMQP port for client connections
+      - "15672:15672" # Management UI port
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+      
+volumes:
+  #rabbitmq:
+  sqlserver:

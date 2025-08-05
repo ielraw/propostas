@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddRepositoryDependencies();
+builder.Services.AddDatabaseDependencies(builder.Configuration);
 builder.Services.AddApplicationDependencies();
 builder.Services.AddQueueDependencies();
 
