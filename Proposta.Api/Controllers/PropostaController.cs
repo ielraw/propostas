@@ -22,6 +22,7 @@ namespace Proposta.API.Controllers
         }
 
         [HttpGet]
+        [Route("{id}")]
         public Task<Domain.Entities.Proposta> Get(Guid id)
         {
             return Task.FromResult(new Domain.Entities.Proposta { Id = id });
@@ -35,7 +36,7 @@ namespace Proposta.API.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Domain.Entities.Proposta> Get()
+        public IEnumerable<Domain.Entities.Proposta> GetList()
         {
             return new List<Domain.Entities.Proposta>
             {

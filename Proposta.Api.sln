@@ -28,6 +28,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Config", ".Config", "{30F4
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{81DDED9D-158B-E303-5F62-77A2896D2A5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{8F86B09C-CCC7-48A7-9232-C189B3BD1627}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F86B09C-CCC7-48A7-9232-C189B3BD1627}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F86B09C-CCC7-48A7-9232-C189B3BD1627}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{7DEE65BD-7B9C-4FCE-9E1C-7D3C8FDC5E79} = {9C0B4104-D4D8-4893-A7C7-44ABF5158781}
 		{D2F75C79-1E25-4C3D-A1A3-D6FD646D39A8} = {8E19CD47-0499-42AF-9F59-8BBEB0C15C0C}
 		{8F86B09C-CCC7-48A7-9232-C189B3BD1627} = {9C0B4104-D4D8-4893-A7C7-44ABF5158781}
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A} = {30F437BF-3E3F-4E2E-9A1D-C55D532CF1BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EFEC8EA4-2FB3-4D05-B7EA-39EC4061EFB8}

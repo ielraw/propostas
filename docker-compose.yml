@@ -1,0 +1,20 @@
+services:
+  proposta.api:
+    image: ${DOCKER_REGISTRY-}propostaapi
+    build:
+      context: .
+      dockerfile: Proposta.API/Dockerfile
+
+  contratacao.api:
+    image: ${DOCKER_REGISTRY-}contratacaoapi
+    build:
+      context: .
+      dockerfile: Contratacao.Api/Dockerfile
+
+
+  contratacao.consumer:
+    image: ${DOCKER_REGISTRY-}contratacaoconsumer
+    build:
+      context: .
+      dockerfile: Contratacao.Consumer/Dockerfile
+
