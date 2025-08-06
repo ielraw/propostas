@@ -4,6 +4,8 @@ using Domain.Dto;
 using Domain.Entities;
 using Domain.Enums;
 using Domain.Repositories;
+using Domain.Services;
+using Infra.Queue.Interfaces;
 using NSubstitute;
 
 namespace Propostas.UnitTests.Services
@@ -35,13 +37,15 @@ namespace Propostas.UnitTests.Services
 
         private readonly IPropostaRepository _propostaRepository;
         private readonly IMapper _mapper;
+        private readonly IMessageBusPublisher _publisher;
         private readonly PropostaService _propostaService;
 
         public PropostaServiceTest()
         {
             _propostaRepository = Substitute.For<IPropostaRepository>();
             _mapper = Substitute.For<IMapper>();
-            _propostaService = new PropostaService(_propostaRepository, _mapper);
+            _publisher = Substitute.For<IMessageBusPublisher>();
+            _propostaService = new PropostaService(_propostaRepository, _mapper, _publisher);
         }
 
         [Fact]

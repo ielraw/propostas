@@ -5,6 +5,12 @@ using Domain.Entities;
 using Domain.Repositories;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
+using NSubstitute.ExceptionExtensions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Propostas.UnitTests.Services
 {

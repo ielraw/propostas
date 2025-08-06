@@ -1,4 +1,5 @@
 using Domain.Dto;
+using Domain.Entities;
 using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +13,7 @@ namespace ContratacaoApi.Controllers
         private readonly ILogger<ContratacaoController> _logger;
         private readonly IContratacaoService _contratacaoService;
 
-        public ContratacaoController(ILogger<ContratacaoController> logger, IContratacaoService contratacaoService)
+        public ContratacaoController(ILogger<ContratacaoController> logger, IContratacaoService contratacaoService )
         {
             _logger = logger;
             _contratacaoService = contratacaoService;

@@ -10,7 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDatabaseDependencies(builder.Configuration);
 builder.Services.AddApplicationDependencies();
 builder.Services.AddQueueDependencies();
-
+builder.Services.AddQueueServices(options =>
+{
+    builder.Configuration.GetSection("RabbitMQ").Bind(options);
+});
 
 
 builder.Services.AddControllers();

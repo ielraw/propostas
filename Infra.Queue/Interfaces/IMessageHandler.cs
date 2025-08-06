@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Dto
+namespace Infra.Queue.Interfaces
 {
-    public class PropostaRequestDto
+    public interface IMessageHandler<in T> where T : class
     {
-        public decimal Price { get; set; }
+        Task HandleAsync(T message);
     }
 }

@@ -1,7 +1,12 @@
 ﻿using Domain.Entities;
 using Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Infra.Database.Repositories
 {
@@ -37,8 +42,7 @@ namespace Infra.Database.Repositories
             return await CommitAsync();
         }
 
-        public virtual async Task<IEnumerable<TEntity>> GetAllAsync(int page = 1, int itens = 10)
-        {
+        public virtual async Task<IEnumerable<TEntity>> GetAllAsync(int page = 1, int itens = 10) { 
             var skip = (page - 1) * itens;
 
             return await Task.FromResult(dbSet.Skip(skip).Take(itens));

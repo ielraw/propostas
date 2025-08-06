@@ -4,6 +4,8 @@ using Domain.Entities;
 using Domain.Enums;
 using Domain.Repositories;
 using Domain.Services;
+using Infra.Queue.Interfaces;
+using System.Reflection;
 
 namespace Application.Services
 {
@@ -11,11 +13,13 @@ namespace Application.Services
     {
         private readonly IPropostaRepository _propostaRepository;
         private readonly IMapper _mapper;
+        private readonly IMessageBusPublisher _publisher;
 
-        public PropostaService(IPropostaRepository propostaRepository, IMapper mapper)
+        public PropostaService(IPropostaRepository propostaRepository, IMapper mapper, IMessageBusPublisher publisher)
         {
             _propostaRepository = propostaRepository;
             _mapper = mapper;
+            _publisher = publisher;
         }
 
         public async Task ChangeStatus(string id, StatusProposta status)
@@ -31,8 +35,10 @@ namespace Application.Services
 
         public async Task ChangeStatusAuto(string id, StatusProposta status)
         {
+            var contratacao = new ContratacaoResponseDto { };
             await ChangeStatus(id, status);
-
+            if(StatusProposta.Aprovada == status)
+                await _publisher.PublishAsync("contratacoes", contratacao);
 
         }
 

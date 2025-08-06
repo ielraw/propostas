@@ -15,6 +15,9 @@ services:
     build:
       context: .
       dockerfile: Contratacao.Api/Dockerfile
+    depends_on: 
+        - rabbitmq
+        - sqlserver
 
 
   contratacao.consumer:
@@ -22,6 +25,9 @@ services:
     build:
       context: .
       dockerfile: Contratacao.Consumer/Dockerfile
+    depends_on: 
+        - rabbitmq
+        - sqlserver
 
       
   sqlserver:

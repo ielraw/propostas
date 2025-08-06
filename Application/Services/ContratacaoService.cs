@@ -4,6 +4,11 @@ using Domain.Entities;
 using Domain.Repositories;
 using Domain.Services;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Application.Services
 {
@@ -13,8 +18,7 @@ namespace Application.Services
         private readonly IContratacaoRepository _contratacaoRepository;
         private readonly IMapper _mapper;
 
-        public ContratacaoService(ILogger<ContratacaoService> logger, IContratacaoRepository contratacaoRepository, IMapper mapper)
-        {
+        public ContratacaoService(ILogger<ContratacaoService> logger, IContratacaoRepository contratacaoRepository, IMapper mapper) {
             _logger = logger;
             _contratacaoRepository = contratacaoRepository;
             _mapper = mapper;
