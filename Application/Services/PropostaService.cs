@@ -35,7 +35,7 @@ namespace Application.Services
 
         public async Task ChangeStatusAuto(string id, StatusProposta status)
         {
-            var contratacao = new ContratacaoResponseDto { };
+            var contratacao = new ContratacaoResponseDto {PropostaId = id };
             await ChangeStatus(id, status);
             if(StatusProposta.Aprovada == status)
                 await _publisher.PublishAsync("contratacoes", contratacao);

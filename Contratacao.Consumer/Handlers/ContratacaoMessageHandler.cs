@@ -5,7 +5,7 @@ using Infra.Queue.Interfaces;
 
 namespace Contratacao.Consumer.Handlers
 {
-    public class ContratacaoMessageHandler : IMessageHandler<Proposta>
+    public class ContratacaoMessageHandler : IMessageHandler<ContratacaoRequestDto>
     {
         private readonly ILogger<ContratacaoMessageHandler> _logger;
         private readonly IContratacaoService _contratacaoService;
@@ -15,12 +15,9 @@ namespace Contratacao.Consumer.Handlers
             _logger = logger;
             _contratacaoService = contratacaoService;
         }
-        public async Task HandleAsync(Proposta message)
+        public async Task HandleAsync(ContratacaoRequestDto message)
         {
-            await _contratacaoService.PostAsync(new ContratacaoRequestDto
-            {
-                PropostaId = message.Id
-            });
+            await _contratacaoService.PostAsync(message);
             await Task.CompletedTask;
         }
     }

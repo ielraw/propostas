@@ -12,7 +12,7 @@ builder.Services.AddQueueServices(options =>
 {
     builder.Configuration.GetSection("RabbitMQ").Bind(options);
 });
-builder.Services.AddQueueConsumer<Proposta, ContratacaoMessageHandler>("contratacoes");
+builder.Services.AddQueueConsumer<ContratacaoRequestDto, ContratacaoMessageHandler>("contratacoes");
 builder.Services.AddDatabaseDependencies(builder.Configuration);
 builder.Services.AddApplicationDependencies();
 builder.Services.AddControllers();
