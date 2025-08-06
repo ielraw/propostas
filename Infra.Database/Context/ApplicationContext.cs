@@ -40,6 +40,8 @@ namespace Infra.Database.Context
 
         public DbSet<Proposta> Propostas { get; set; }
 
+        public DbSet<Contratacao> Contratacoes { get; set; }
+
 
     }
 }

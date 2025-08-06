@@ -1,3 +1,4 @@
+using Domain.Dto;
 using Domain.Entities;
 using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,7 @@ namespace ContratacaoApi.Controllers
         }
 
         [HttpPost]
-        public async Task<Contratacao> Post(Contratacao contratacao)
+        public async Task<ContratacaoResponseDto> Post(ContratacaoRequestDto contratacao)
         {
             return await _contratacaoService.PostAsync(contratacao);
         }

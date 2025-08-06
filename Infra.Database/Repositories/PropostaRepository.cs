@@ -1,4 +1,5 @@
 ﻿using Domain.Repositories;
+using Infra.Database.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Infra.Database.Repositories
 {
     public class PropostaRepository : RepositoryAsync<Domain.Entities.Proposta>, IPropostaRepository
     {
-        protected PropostaRepository(DbContext dbContext) : base(dbContext)
+        public PropostaRepository(ApplicationContext dbContext) : base(dbContext)
         {
         }
     }

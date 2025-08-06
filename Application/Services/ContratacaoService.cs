@@ -1,4 +1,6 @@
-﻿using Domain.Entities;
+﻿using AutoMapper;
+using Domain.Dto;
+using Domain.Entities;
 using Domain.Repositories;
 using Domain.Services;
 using Microsoft.Extensions.Logging;
@@ -14,15 +16,19 @@ namespace Application.Services
     {
         private readonly ILogger<ContratacaoService> _logger;
         private readonly IContratacaoRepository _contratacaoRepository;
+        private readonly IMapper _mapper;
 
-        public ContratacaoService(ILogger<ContratacaoService> logger, IContratacaoRepository contratacaoRepository) {
+        public ContratacaoService(ILogger<ContratacaoService> logger, IContratacaoRepository contratacaoRepository, IMapper mapper) {
             _logger = logger;
             _contratacaoRepository = contratacaoRepository;
+            _mapper = mapper;
         }
 
-        public async Task<Contratacao> PostAsync(Contratacao model)
+        public async Task<ContratacaoResponseDto> PostAsync(ContratacaoRequestDto model)
         {
-            return await _contratacaoRepository.AddAsync(model);
+            var contratacao = _mapper.Map<Contratacao>(model);
+            var result =  await _contratacaoRepository.AddAsync(contratacao);
+            return _mapper.Map<ContratacaoResponseDto>(result);
         }
     }
 }

@@ -1,4 +1,5 @@
 using Application.Services;
+using Domain.Dto;
 using Domain.Entities;
 using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -20,14 +21,14 @@ namespace Proposta.API.Controllers
         }
 
         [HttpPost]
-        public async Task<Domain.Entities.Proposta> Post(Domain.Entities.Proposta model)
+        public async Task<PropostaResponseDto> Post(PropostaRequestDto model)
         {
             return await _propostaService.PostAsync(model);   
         }
 
         [HttpGet]
         [Route("{id}")]
-        public Task<Domain.Entities.Proposta> Get(string id)
+        public Task<PropostaResponseDto> Get(string id)
         {
             return _propostaService.GetAsync(id);
         }
@@ -41,13 +42,13 @@ namespace Proposta.API.Controllers
 
         [HttpPut]
         [Route("{id}/change-status-auto")]
-        public async Task<Domain.Entities.Proposta> ChangeStatus(string id)
+        public async Task<Domain.Entities.Proposta> ChangeStatusAuto(string id)
         {
             return await Task.FromResult(new Domain.Entities.Proposta { Id = id });
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Domain.Entities.Proposta>> GetList(int page = 1)
+        public async Task<IEnumerable<PropostaResponseDto>> GetList(int page = 1)
         {
             return await  _propostaService.GetListAsync(page);
         }

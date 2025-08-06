@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Domain.Dto;
+using Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace Domain.Services
 {
     public interface IContratacaoService
     {
-        Task<Contratacao> PostAsync(Contratacao model);
+        Task<ContratacaoResponseDto> PostAsync(ContratacaoRequestDto model);
     }
 }

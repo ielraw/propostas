@@ -12,11 +12,6 @@ namespace Infra.Database
 
         public static void AddDatabaseDependencies(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<IContratacaoRepository, ContratacaoRepository>();
-            services.AddScoped<IPropostaRepository, PropostaRepository>();
-
-
-
             var conn = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationContext>(
                 optionsBuilder => optionsBuilder.UseSqlServer(conn, options =>
@@ -25,6 +20,12 @@ namespace Infra.Database
                     options.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
                 })
             );
+
+
+            services.AddScoped<IContratacaoRepository, ContratacaoRepository>();
+            services.AddScoped<IPropostaRepository, PropostaRepository>();
+
+
         }
     }
 }

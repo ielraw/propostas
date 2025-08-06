@@ -1,4 +1,5 @@
 ﻿using Domain.Repositories;
+using Infra.Database.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Infra.Database.Repositories
 {
     public class ContratacaoRepository : RepositoryAsync<Domain.Entities.Contratacao>, IContratacaoRepository
     {
-        protected ContratacaoRepository(DbContext dbContext) : base(dbContext)
+        public ContratacaoRepository(ApplicationContext dbContext) : base(dbContext)
         {
         }
     }
