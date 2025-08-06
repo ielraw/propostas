@@ -1,6 +1,4 @@
-using Application.Services;
 using Domain.Dto;
-using Domain.Entities;
 using Domain.Enums;
 using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +22,7 @@ namespace Proposta.API.Controllers
         [HttpPost]
         public async Task<PropostaResponseDto> Post(PropostaRequestDto model)
         {
-            return await _propostaService.PostAsync(model);   
+            return await _propostaService.PostAsync(model);
         }
 
         [HttpGet]
@@ -51,7 +49,7 @@ namespace Proposta.API.Controllers
         [HttpGet]
         public async Task<IEnumerable<PropostaResponseDto>> GetList(int page = 1)
         {
-            return await  _propostaService.GetListAsync(page);
+            return await _propostaService.GetListAsync(page);
         }
     }
 }

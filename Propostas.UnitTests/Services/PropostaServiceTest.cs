@@ -4,7 +4,6 @@ using Domain.Dto;
 using Domain.Entities;
 using Domain.Enums;
 using Domain.Repositories;
-using Domain.Services;
 using NSubstitute;
 
 namespace Propostas.UnitTests.Services
