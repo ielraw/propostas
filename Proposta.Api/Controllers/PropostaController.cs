@@ -39,6 +39,13 @@ namespace Proposta.API.Controllers
             return await Task.FromResult(new Domain.Entities.Proposta { Id = id });
         }
 
+        [HttpPut]
+        [Route("{id}/change-status-auto")]
+        public async Task<Domain.Entities.Proposta> ChangeStatus(string id)
+        {
+            return await Task.FromResult(new Domain.Entities.Proposta { Id = id });
+        }
+
         [HttpGet]
         public async Task<IEnumerable<Domain.Entities.Proposta>> GetList(int page = 1)
         {
