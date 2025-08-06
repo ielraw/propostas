@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Dto;
 using Domain.Entities;
+using Domain.Enums;
 using Domain.Repositories;
 using Domain.Services;
 using System.Reflection;
@@ -16,6 +17,24 @@ namespace Application.Services
         {
             _propostaRepository = propostaRepository;
             _mapper = mapper;
+        }
+
+        public async Task ChangeStatus(string id, StatusProposta status)
+        {
+            var proposta = await _propostaRepository.GetByIdAsync(id);
+
+            if (proposta == null) return;
+
+            proposta.StatusProposta = status;
+
+            await _propostaRepository.UpdateAsync(proposta);
+        }
+
+        public async Task ChangeStatusAuto(string id, StatusProposta status)
+        {
+            await ChangeStatus(id, status);
+
+
         }
 
         public async Task<PropostaResponseDto> GetAsync(string Id)

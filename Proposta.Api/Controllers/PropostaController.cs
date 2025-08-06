@@ -1,6 +1,7 @@
 using Application.Services;
 using Domain.Dto;
 using Domain.Entities;
+using Domain.Enums;
 using Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -34,17 +35,17 @@ namespace Proposta.API.Controllers
         }
 
         [HttpPut]
-        [Route("{id}/change-status")]
-        public async Task<Domain.Entities.Proposta> ChangeStatus(string id)
+        [Route("{id}/change-status/{status}")]
+        public async Task ChangeStatus(string id, StatusProposta status)
         {
-            return await Task.FromResult(new Domain.Entities.Proposta { Id = id });
+            await _propostaService.ChangeStatus(id, status);
         }
 
         [HttpPut]
-        [Route("{id}/change-status-auto")]
-        public async Task<Domain.Entities.Proposta> ChangeStatusAuto(string id)
+        [Route("{id}/change-status-auto/{status}")]
+        public async Task ChangeStatusAuto(string id, string status)
         {
-            return await Task.FromResult(new Domain.Entities.Proposta { Id = id });
+            await _propostaService.ChangeStatusAuto(id, status);
         }
 
         [HttpGet]

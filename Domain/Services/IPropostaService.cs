@@ -1,5 +1,6 @@
 ﻿using Domain.Dto;
 using Domain.Entities;
+using Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Domain.Services
         Task<PropostaResponseDto> PostAsync(PropostaRequestDto model);
         Task<PropostaResponseDto> GetAsync(string Id);
         Task<IEnumerable<PropostaResponseDto>> GetListAsync(int page = 1, int itens = 10);
-        Task<bool> UpdateAsync(string id, PropostaRequestDto model);
+        Task ChangeStatus(string id, StatusProposta status);
+        Task ChangeStatusAuto(string id, string status);
     }
 }
