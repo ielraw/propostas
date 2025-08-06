@@ -18,3 +18,9 @@
 5. Para alterar quais os projetos serão iniciados no debug, 
 	1. clique em "Manage Docker compose Launch Setting" ![debug-settings](image/debug-settings.png "debug-settings")
 	2. Selecione os projetos que deseja iniciar e qual deverá ser aberto automaticamente pelo navegador(Você pode acessar os outros swagger normalmente pelo navegador) ![launch-settings](image/launch-settings.png "debug-settings2")
+
+	
+ 
+## Arquitetura
+
+![launch-settings](image/arquitetura.png "arquitetura")
