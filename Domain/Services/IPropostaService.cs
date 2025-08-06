@@ -15,6 +15,6 @@ namespace Domain.Services
         Task<PropostaResponseDto> GetAsync(string Id);
         Task<IEnumerable<PropostaResponseDto>> GetListAsync(int page = 1, int itens = 10);
         Task ChangeStatus(string id, StatusProposta status);
-        Task ChangeStatusAuto(string id, string status);
+        Task ChangeStatusAuto(string id, StatusProposta status);
     }
 }

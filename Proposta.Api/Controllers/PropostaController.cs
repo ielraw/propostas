@@ -43,7 +43,7 @@ namespace Proposta.API.Controllers
 
         [HttpPut]
         [Route("{id}/change-status-auto/{status}")]
-        public async Task ChangeStatusAuto(string id, string status)
+        public async Task ChangeStatusAuto(string id, StatusProposta status)
         {
             await _propostaService.ChangeStatusAuto(id, status);
         }

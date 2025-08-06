@@ -26,9 +26,20 @@ namespace Application.Services
 
         public async Task<ContratacaoResponseDto> PostAsync(ContratacaoRequestDto model)
         {
-            var contratacao = _mapper.Map<Contratacao>(model);
-            var result =  await _contratacaoRepository.AddAsync(contratacao);
-            return _mapper.Map<ContratacaoResponseDto>(result);
+            try
+            {
+                if (model == null)
+                    throw new ArgumentNullException(nameof(model));
+
+                var contratacao = _mapper.Map<Contratacao>(model);
+                var result = await _contratacaoRepository.AddAsync(contratacao);
+                return _mapper.Map<ContratacaoResponseDto>(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao criar contratação");
+                throw;
+            }
         }
     }
 }
