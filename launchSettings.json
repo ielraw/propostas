@@ -3,10 +3,15 @@
     "Docker Compose": {
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "proposta.api",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}/swagger",
       "serviceActions": {
         "proposta.api": "StartDebugging",
         "contratacao.api": "StartDebugging",
-        "contratacao.consumer": "StartDebugging"
+        "contratacao.consumer": "StartDebugging",
+        "rabbitmq": "StartWithoutDebugging",
+        "sqlserver": "StartWithoutDebugging"
       }
     }
   }
