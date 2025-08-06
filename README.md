@@ -8,11 +8,10 @@
  
 ## Debug
 1. Clone o repositório
-2. No diretório Infra.Database execute o comando 
+2. Execute o projedo docker-compose (Ele iniciará o debug )![debug.](image/debug.png "debug.")
+3. No diretório Infra.Database execute o comando 
 	 ```bash
 	   dotnet ef database update --connection "Server=localhost;Database=proposta;User Id=sa;Password=SqlServer2022!; TrustServerCertificate=True"
-	```
-3. Inicie o debug ![debug.](image/debug.png "debug.")
 
 4. Para alterar quais os projetos serão iniciados no debug, 
 	1. clique em "Manage Docker compose Launch Setting" ![debug-settings](image/debug-settings.png "debug-settings")
