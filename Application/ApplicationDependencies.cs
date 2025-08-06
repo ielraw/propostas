@@ -20,6 +20,7 @@ namespace Application
             services.AddAutoMapper(x =>
             {
                 x.AddProfile(new PropostaMapper());
+                x.AddProfile(new ContratacaoMapper());
             });
 
             services.AddScoped<IContratacaoService, ContratacaoService>();
