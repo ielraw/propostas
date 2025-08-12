@@ -42,7 +42,7 @@ namespace Propostas.UnitTests.Services
             var contratacao = new Contratacao
             {
                 Id = "1",
-                PropostaId = 123,
+                PropostaId = "123",
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow
             };

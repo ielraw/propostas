@@ -1,13 +1,10 @@
 ﻿using Application.Services;
+using Application.Validators;
 using Domain.Mapper;
-using Domain.Repositories;
 using Domain.Services;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FluentValidation;
+using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 
 namespace Application
 {
@@ -22,6 +19,9 @@ namespace Application
                 x.AddProfile(new PropostaMapper());
                 x.AddProfile(new ContratacaoMapper());
             });
+
+            services.AddFluentValidationAutoValidation();
+            services.AddValidatorsFromAssemblyContaining<PropostaValidator>();
 
             services.AddScoped<IContratacaoService, ContratacaoService>();
             services.AddScoped<IPropostaService, PropostaService>();
